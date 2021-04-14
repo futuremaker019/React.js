@@ -1,27 +1,28 @@
 import World from './World';
 import './Hello.css'; 
 import { useState } from 'react';
+import UserName from './UserName';
 
-export default function Hello() {
-  // let name = "Mike";
-
-  // useState()에는 초기값이 들어간다.
+// App.js의 component에서 전달받은 값을 props로 받는다.
+// export default function Hello(props) {
+export default function Hello({age}) {
   const [name, setName] = useState('Mike');
 
-  // function changeName() {
-  //   const newName = name === "Mike" ? "Jane" : "Mike";
-  //   console.log(newName);
-  //   // document.getElementById("name").innerText = name;
-  //   setName(newName);
-  // }
+  // props는 변수처럼 바로 값을 할당할수 없다.
+  // props의 값을 변경하려면 state를 이용해야 한다.
+  // const [age, setAge] = useState(props.age);
+
+  const msg = age > 19 ? "성인 입니다." : "미성년자 입니다.";
 
   return (
     <div>
-      <h2>{name}</h2>
-      {/* <button onClick={changeName}>Change</button> */}
+      <h2>
+        {name} ({age}) : {msg}
+      </h2>
+      <UserName name={name}/ >
       <button onClick={() => {
           setName(name === "Mike" ? "Jane" : "Mike");
-          console.log(name);
+          // setAge(age + 1);
         }}
       >
         Change
@@ -29,8 +30,3 @@ export default function Hello() {
     </div>
   );
 };
-
-// 이렇게 써도 된다.
-// export default function Hello() {
-//   <p>Hello</p>
-// }
