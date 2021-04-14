@@ -1,42 +1,31 @@
 import World from './World';
 import './Hello.css'; 
+import { useState } from 'react';
 
 export default function Hello() {
-  function showName() {
-    console.log("Mike");
-  }
+  // let name = "Mike";
 
-  function showAge(age) {
-    console.log(age);
-  }
+  // useState()에는 초기값이 들어간다.
+  const [name, setName] = useState('Mike');
 
-  function showText(e) {
-    console.log(e.target.value);
-  }
-
-  function showText1(txt) {
-    console.log(txt);
-  }
+  // function changeName() {
+  //   const newName = name === "Mike" ? "Jane" : "Mike";
+  //   console.log(newName);
+  //   // document.getElementById("name").innerText = name;
+  //   setName(newName);
+  // }
 
   return (
     <div>
-      <h1>Hello</h1>
-      <button onClick={showName}>Show name</button>
-      <button 
-        onClick={() => {
-          showAge(10);
+      <h2>{name}</h2>
+      {/* <button onClick={changeName}>Change</button> */}
+      <button onClick={() => {
+          setName(name === "Mike" ? "Jane" : "Mike");
+          console.log(name);
         }}
       >
-        Show age
+        Change
       </button>
-      <input type="text" onChange={showText}/>
-      <input 
-        type="text" 
-        onChange={e => {
-          const txt = e.target.value;
-          showText1(txt);
-        }}
-      />
     </div>
   );
 };
