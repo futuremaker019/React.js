@@ -1,8 +1,9 @@
 import dummy from "../db/data.json";
+import Word from "./Word";
 
 export default function Day() {
   // dummy.words
-  const day = 3;
+  const day = 1;
   const wordlist = dummy.words.filter(word => word.day === day);
 
 
@@ -11,14 +12,7 @@ export default function Day() {
       <table>
         <tbody>
           {wordlist.map(word => (
-            <tr key={word.id}>
-              <td>
-                {word.eng}
-              </td>
-              <td>
-                {word.kor}
-              </td>
-            </tr>
+            <Word word={word} key={word.id}/>
           ))}
         </tbody>
       </table>
